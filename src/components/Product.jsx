@@ -30,8 +30,8 @@ const Product = () => {
   return (
     <>
       <h2>Products Page</h2>
-      {data.map((hero) => {
-        return <div key={hero.id}>{hero.title}</div>;
+      {data.map((hero, i) => {
+        return <div key={i}>{hero.title}</div>;
       })}
     </>
   );
