@@ -7,6 +7,9 @@ const fetchProduct = (/*onSuccess, onError */) => {
 
 export const useQuerydata = () => {
   return useQuery("pro", fetchProduct, {
+    // refetchOnWindowFocus: false, // true is defaultt
+    // refetchOnMount: false,
+    // retry: 1, // If there is error refetch data
     // cacheTime: 5000,
     // staleTime: 30000,
     // refetchInterval: 15000,

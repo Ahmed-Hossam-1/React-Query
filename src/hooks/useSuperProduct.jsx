@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useQuery } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 
 const fetchProduct = (/*proId*/ { queryKey }) => {
   console.log(queryKey);
@@ -8,5 +8,19 @@ const fetchProduct = (/*proId*/ { queryKey }) => {
 };
 
 export default function useSuperProduct(proId) {
-  return useQuery(["pro", proId], fetchProduct);
+  const queyClient = useQueryClient();
+  return useQuery(["pro", proId], fetchProduct, {
+    initialData: () => {
+      const hero = queyClient
+        .getQueryData("pro")
+        ?.data?.find((pro) => pro.id === parseInt(proId));
+      if (hero) {
+        return {
+          data: hero,
+        };
+      } else {
+        return undefined;
+      }
+    },
+  });
 }
