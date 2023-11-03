@@ -19,15 +19,16 @@ const RQproduct = () => {
     <div>
       <h2>RQ Products Page</h2>
       <button onClick={refetch}>fetch</button>
-      {data?.data.map((hero, i) => (
+      {/* {data?.data?.map((hero, i) => (
         <div key={i}>
           <Link to={`/rq-product/${hero.id}`}>{hero.title}</Link>
         </div>
-      ))}
+      ))} */}
       {/* 
       {data.map((heroTitle, i) => (
         <div key={i}>{heroTitle}</div>
       ))} */}
+      {data}
     </div>
   );
 };

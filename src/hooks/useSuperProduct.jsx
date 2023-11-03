@@ -2,7 +2,7 @@ import axios from "axios";
 import { useQuery, useQueryClient } from "react-query";
 
 const fetchProduct = (/*proId*/ { queryKey }) => {
-  console.log(queryKey);
+  console.log(queryKey); // ["pro", proId]
   const proId = queryKey[1];
   return axios.get(`http://localhost:3000/products/${proId}`);
 };
