@@ -1,13 +1,16 @@
 import axios from "axios";
-import { useQuery, useMutation } from "react-query";
+import { useQuery, useMutation, useQueryClient } from "react-query";
+import { request } from "../utils/axios-utils";
 
 const fetchProduct = (/*onSuccess, onError */) => {
-  return axios.get("http://localhost:3000/products");
+  // return axios.get("http://localhost:3000/products");
+  return request({ url: "/products" });
 };
 
-const addSuper = (hero) => {
-  return axios.post(`http://localhost:3000/products`, hero);
-};
+// const addSuper = (hero) => {
+//   // return axios.post(`http://localhost:3000/products`, hero);
+//   return request({ url: "/products", method: "post", data: hero });
+// };
 
 export const useQuerydata = (onSuccess, onError) => {
   return useQuery("pro", fetchProduct, {
@@ -34,6 +37,39 @@ export const useQuerydata = (onSuccess, onError) => {
   });
 };
 
-export const useAddSuperHeroData = () => {
-  return useMutation(addSuper);
-};
+// export const useAddSuperHeroData = () => {
+//   const queryClient = useQueryClient();
+//   return useMutation(addSuper, {
+//     // onSuccess: (data) => {
+//     //   // queryClient.invalidateQueries("pro");
+//     // queryClient.setQueryData("pro", (oldQueryData) => {
+//     //   return {
+//     //     ...oldQueryData,
+//     //     data: [...oldQueryData.data, data.data],
+//     //   };
+//     // });
+//     // },
+//     onMutate: async (newData) => {
+//       await queryClient.cancelQueries("pro");
+//       const prevData = queryClient.getQueryData("pro");
+//       queryClient.setQueryData("pro", (oldQueryData) => {
+//         return {
+//           ...oldQueryData,
+//           data: [
+//             ...oldQueryData.data,
+//             { id: oldQueryData?.data?.length + 1, ...newData },
+//           ],
+//         };
+//       });
+//       return {
+//         prevData,
+//       };
+//     },
+//     onError: (_error, _hero, context) => {
+//       queryClient.setQueryData("pro", context.prevData);
+//     },
+//     onSettled: () => {
+//       queryClient.invalidateQueries("pro");
+//     },
+//   });
+// };

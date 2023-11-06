@@ -13,7 +13,7 @@ import ParallelQuery from "./components/ParallelQuery";
 import DynamicParallelQuery from "./components/DynamicParallelQuery";
 import DependentQueries from "./components/DependentQueries";
 import InfiniteQueries from "./components/InfiniteQueries";
-import { RQSuperHeroesPage } from "./components/RQSuperHeroesPage";
+// import { RQSuperHeroesPage } from "./components/RQSuperHeroesPage";
 
 const queryClient = new QueryClient();
 
@@ -41,9 +41,9 @@ const App = () => {
               <li>
                 <Link to="/rq-product">RQ Product</Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/rq-super">RQ superHero</Link>
-              </li>
+              </li> */}
               {/* <li>
                 <Link to="/inf">RQ infinite</Link>
               </li> */}
@@ -66,7 +66,7 @@ const App = () => {
               <Route path=":ID" element={<RQProductID />} />
             </Route>
             <Route path="/parallel" element={<ParallelQuery />} />
-            <Route path="/rq-super" element={<RQSuperHeroesPage />} />
+            {/* <Route path="/rq-super" element={<RQSuperHeroesPage />} /> */}
             <Route path="/inf" element={<InfiniteQueries />} />
             <Route
               path="/dy-parallel"
